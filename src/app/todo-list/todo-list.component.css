@@ -144,4 +144,19 @@ button {
     /* background-color: #535353; */
     text-decoration: none;
   }
-  
+  button.clean,
+button.restore {
+    background-color: rgb(71, 46, 86, 26, 137);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px; /* Adjust the margin as needed */
+}
+
+button.clean:hover,
+button.restore:hover {
+    background-color: #e24a29;
+}
