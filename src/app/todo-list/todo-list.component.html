@@ -1,0 +1,24 @@
+
+<div>
+    <h2>Huda's Productive ToDo List</h2>
+    <input [(ngModel)]="newTodo" (keyup.enter)="addTodo()" placeholder="Add a new task">
+    <ul>
+      <li *ngFor="let todo of todos" [ngClass]="{ 'completed': todo.completed, 'postponed': todo.postponed }">
+        <input type="checkbox" [(ngModel)]="todo.isChecked" id="todo-{{todo.text}}">
+        <label for="todo-{{todo.text}}">
+          <span [ngStyle]="{ 'text-decoration': todo.completed ? 'line-through' : 'none', 'color': todo.completed ? 'green' : 'black' }">{{ todo.text }}</span>
+        </label>
+        <button (click)="postponeTodo(todo)"><img width="15" height="15" src="https://img.icons8.com/office/16/plus-1day.png" alt="plus-1day"/></button>
+        <button (click)="editTodo(todo)"><img width="15" height="15" src="https://img.icons8.com/ios/50/edit--v1.png" alt="edit--v1"/></button>
+        <button (click)="deleteTodo(todo)">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 48 48">
+                <path fill="#b39ddb" d="M30.6,44H17.4c-2,0-3.7-1.4-4-3.4L9,11h30l-4.5,29.6C34.2,42.6,32.5,44,30.6,44z"></path><path fill="#9575cd" d="M28 6L20 6 14 12 34 12z"></path><path fill="#7e57c2" d="M10,8h28c1.1,0,2,0.9,2,2v2H8v-2C8,8.9,8.9,8,10,8z"></path>
+                </svg>
+          </button>
+          
+      </li>
+    </ul>
+    <button (click)="cleanCompleted()">Clean Completed</button>
+    <button (click)="restorePostponed()">Restore Postponed</button>
+  </div>
+  
