@@ -7,11 +7,10 @@ import { Component } from '@angular/core';
 })
 export class TodoListComponent {
   newTodo: string = '';
-  todos: { text: string; completed: boolean; isPostponed: boolean }[] = [];
-
+  todos: { text: string; completed: boolean; postponed: boolean }[] = [];
   addTodo() {
-    if (this.newTodo.trim() !== '') {
-      this.todos.push({ text: this.newTodo, completed: false, isPostponed: false });
+    if (this.newTodo) {
+      this.todos.push({ text: this.newTodo, completed: false, postponed: false });
       this.newTodo = '';
     }
   }
@@ -21,7 +20,7 @@ export class TodoListComponent {
   }
 
   postpone(todo: any) {
-    todo.isPostponed = true;
+    todo.postponed = true;
   }
 
   deleteTodo(todo: any) {
@@ -42,7 +41,7 @@ export class TodoListComponent {
     this.todos = this.todos.filter(todo => !todo.completed);
   }
 
-  restoreAllPostponed() {
-    this.todos.forEach(todo => todo.isPostponed = false);
+  restorePostponed() {
+    this.todos.forEach((todo) => (todo.postponed = false));
   }
 }

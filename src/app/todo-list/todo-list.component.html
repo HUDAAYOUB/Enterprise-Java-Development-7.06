@@ -2,11 +2,13 @@
 <div>
     <h2>Huda's Productive ToDo List</h2>
     <input [(ngModel)]="newTodo" (keyup.enter)="addTodo()" placeholder="Add a new task">
+    <button type="button" (click)="addTodo()">Add</button>
     <ul>
-        <li *ngFor="let todo of todos" [ngClass]="{ 'completed': todo.completed, 'postponed': todo.isPostponed }">
+        <li *ngFor="let todo of todos" [ngClass]="{ 'completed': todo.completed, 'postponed': todo.postponed }">
         <span [ngStyle]="{ 'text-decoration': todo.completed ? 'line-through' : 'none', 'color': todo.completed ? 'Grey' : 'black' }">{{ todo.text }}</span>
         <button (click)="completeTodo(todo)"><img width="15" height="15" src="https://img.icons8.com/ios/50/task-completed.png" alt="task-completed"/></button>
-        <button (click)="postpone(todo)"><img width="15" height="15" src="https://img.icons8.com/office/16/plus-1day.png" alt="plus-1day"/></button>
+        <button (click)="postpone(todo)">
+            <img width="15" height="15" src="https://img.icons8.com/office/16/plus-1day.png" alt="plus-1day"/></button>
         <button (click)="editTodo(todo)"><img width="15" height="15" src="https://img.icons8.com/ios/50/edit--v1.png" alt="edit--v1"/></button>
         <button (click)="deleteTodo(todo)">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 48 48">
@@ -18,6 +20,6 @@
     </ul>
   
 <button (click)="cleanCompleted()">Clean Completed</button>
-<button (click)="restoreAllPostponed()">Restore All Postponed</button>
+<button (click)="restorePostponed()">Restore All Postponed</button>
 </div>
 
